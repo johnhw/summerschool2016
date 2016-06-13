@@ -1,3 +1,4 @@
+import numpy as np
 def window_data(stream,  size, step=None, subsample=None, window=None):
     """Takes a single time series of data `stream` and splits into
     windows of `size`, stepping in increments of `step` each time. 
