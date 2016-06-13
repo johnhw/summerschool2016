@@ -2,7 +2,7 @@ import sklearn.metrics
 import scipy.interpolate
 import scipy.io.wavfile
 import numpy as np
-from tqdm import tnrange, tqdm_notebook
+#   from tqdm import tnrange, tqdm_notebook
 from time import sleep
 
 true_labels = [[0, 1, 4],
@@ -51,7 +51,7 @@ def load_wave(basename):
 
 def challenge_evaluate_performance(fn):
     score = 0    
-    for i in tnrange(8, desc="Total"):
+    for i in range(8):
         wave = load_wave("data/secret_tests/challenge_valid_%d"%i)    
         labels = true_labels[i]
         pred_labels = fn(wave)
@@ -59,8 +59,6 @@ def challenge_evaluate_performance(fn):
             # best of 3!
             score += test_classification_score(wave, labels, pred_labels)
         
-        for j in tqdm_notebook(xrange(40), desc='Test case %d'%i):
-            sleep(0.1)
     print "*** Total score: %.2f ***" % score
     return score
         
